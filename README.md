@@ -120,7 +120,7 @@ L'application sera accessible sur `http://localhost:3000`
 
 ## 🎨 Personnalisation
 
-### Thème kawaii
+### Thème Enfantin
 - Couleurs pastel et douces
 - Animations fluides
 - Icônes expressives
@@ -198,7 +198,7 @@ Les contributions sont les bienvenues ! Pour contribuer :
 ## 📝 Changelog
 
 ### Version 1.0.0
-- ✨ Interface kawaii complète
+- ✨ Interface enfantine
 - 🎮 Générateur de grilles intelligent
 - 📚 Intégration API Trouve-mot.fr
 - 🖨️ Export PDF et impression
