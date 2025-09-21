@@ -18,39 +18,47 @@ class DictionaryService {
     try {
       const validWords: Word[] = []
       const categories = this.getCategoriesByDifficulty(difficulty)
-      let attempts = 0
-      const maxAttempts = 5 // Limiter les tentatives pour éviter les boucles infinies
       
-      while (validWords.length < count && attempts < maxAttempts) {
-        // Choisir une catégorie aléatoire
-        const randomCategory = categories[Math.floor(Math.random() * categories.length)]
+      // Mélanger les catégories pour avoir de la variété
+      const shuffledCategories = this.shuffleArray([...categories])
+      
+      // Calculer combien de mots récupérer par catégorie
+      const wordsPerCategory = Math.max(1, Math.ceil(count / shuffledCategories.length))
+      
+      // Récupérer des mots de plusieurs catégories différentes
+      for (const category of shuffledCategories) {
+        if (validWords.length >= count) break
         
-        // Récupérer plus de mots que nécessaire pour compenser les filtres
-        const fetchCount = Math.min(count * 2, 50)
-        
-        // Faire l'appel API avec la catégorie choisie
-        const response = await fetch(`https://trouve-mot.fr/api/categorie/${randomCategory}/${fetchCount}`)
-        const data = await response.json()
-        
-        if (Array.isArray(data) && data.length > 0) {
-          // Filtrer et traiter les mots valides
-          const words = data
-            .filter((item: any) => this.isValidWord(item.name))
-            .map((item: any) => ({
-              text: this.removeAccents(item.name).toUpperCase(),
-              definition: `Mot de la catégorie ${this.getCategoryName(randomCategory)}`,
-              category: this.getCategoryName(randomCategory),
-              difficulty: difficulty
-            }))
+        try {
+          // Récupérer des mots de cette catégorie
+          const fetchCount = Math.min(wordsPerCategory * 2, 20) // Récupérer plus pour compenser les filtres
+          const response = await fetch(`https://trouve-mot.fr/api/categorie/${category}/${fetchCount}`)
+          const data = await response.json()
           
-          validWords.push(...words)
+          if (Array.isArray(data) && data.length > 0) {
+            // Filtrer et traiter les mots valides
+            const words = data
+              .filter((item: any) => this.isValidWord(item.name))
+              .map((item: any) => ({
+                text: this.removeAccents(item.name).toUpperCase(),
+                definition: `Mot de la catégorie ${this.getCategoryName(category)}`,
+                category: this.getCategoryName(category),
+                difficulty: difficulty
+              }))
+            
+            validWords.push(...words)
+          }
+        } catch (categoryError) {
+          console.warn(`Erreur lors du chargement de la catégorie ${category}:`, categoryError)
+          // Continuer avec la catégorie suivante
         }
-        
-        attempts++
       }
       
+      // Mélanger les mots pour avoir de la variété dans l'ordre
+      const shuffledWords = this.shuffleArray(validWords)
+      
       // Retourner seulement le nombre demandé
-      return validWords.slice(0, count)
+      return shuffledWords.slice(0, count)
     } catch (error) {
       console.warn('Erreur lors du chargement du dictionnaire en ligne:', error)
       return []
