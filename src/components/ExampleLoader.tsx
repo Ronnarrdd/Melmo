@@ -24,7 +24,7 @@ const ExampleLoader: React.FC<ExampleLoaderProps> = ({ onSettingsChange, onWords
 
   const loadExamples = async () => {
     try {
-      const response = await fetch('/examples.json')
+      const response = await fetch('./examples.json')
       const data = await response.json()
       setExamples(data.exampleGrids)
     } catch (error) {

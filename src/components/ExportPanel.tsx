@@ -43,7 +43,7 @@ const ExportPanel: React.FC<ExportPanelProps> = ({ wordGrid, settings }) => {
       logoContainer.style.zIndex = '10'
       
       const logoImg = document.createElement('img')
-      logoImg.src = '/melmofeuille.png'
+      logoImg.src = './melmofeuille.png'
       logoImg.style.height = '30px'
       logoImg.style.width = 'auto'
       logoContainer.appendChild(logoImg)
@@ -242,7 +242,7 @@ const ExportPanel: React.FC<ExportPanelProps> = ({ wordGrid, settings }) => {
       logoContainer.style.zIndex = '10'
       
       const logoImg = document.createElement('img')
-      logoImg.src = '/melmofeuille.png'
+      logoImg.src = './melmofeuille.png'
       logoImg.style.height = '30px'
       logoImg.style.width = 'auto'
       logoContainer.appendChild(logoImg)
@@ -450,7 +450,7 @@ const ExportPanel: React.FC<ExportPanelProps> = ({ wordGrid, settings }) => {
           </head>
           <body>
             <div class="logo-container">
-              <img src="/melmofeuille.png" alt="Melmo" class="logo">
+              <img src="./melmofeuille.png" alt="Melmo" class="logo">
             </div>
             <div class="word-grid" style="grid-template-columns: repeat(${wordGrid.size}, 1fr);">
               ${wordGrid.grid.flat().map(letter =>

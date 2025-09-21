@@ -30,11 +30,32 @@ const WordGridGenerator: React.FC<WordGridGeneratorProps> = ({
   }
 
   const getAvailableWords = async (): Promise<Word[]> => {
-    // Utiliser getNewWordsByDifficulty pour avoir de nouveaux mots à chaque génération
-    const dictionaryWords = await dictionaryService.getNewWordsByDifficulty(settings.difficulty)
-    const allWords = [...dictionaryWords, ...customWords]
+    // Si des mots personnalisés sont fournis, utiliser UNIQUEMENT ces mots
+    if (customWords.length > 0) {
+      return customWords.filter(word => {
+        const wordLength = word.text.length
+        const maxLength = Math.floor(settings.gridSize * 0.8)
+        
+        if (wordLength > maxLength) return false
+        
+        // Filtrage supplémentaire basé sur la difficulté
+        switch (settings.difficulty) {
+          case 'easy':
+            return word.difficulty === 'easy' || wordLength <= 6
+          case 'medium':
+            return word.difficulty !== 'hard' || wordLength <= 8
+          case 'hard':
+            return true
+          default:
+            return true
+        }
+      })
+    }
     
-    return allWords.filter(word => {
+    // Sinon, utiliser le dictionnaire comme avant
+    const dictionaryWords = await dictionaryService.getNewWordsByDifficulty(settings.difficulty)
+    
+    return dictionaryWords.filter(word => {
       const wordLength = word.text.length
       const maxLength = Math.floor(settings.gridSize * 0.8)
       
@@ -213,7 +234,13 @@ const WordGridGenerator: React.FC<WordGridGeneratorProps> = ({
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginBottom: '16px' }}>
           <span className="badge">Grille {settings.gridSize}×{settings.gridSize}</span>
           <span className="badge">Difficulté: {getDifficultyLabel(settings.difficulty)}</span>
-          <span className="badge">Mots: {customWords.length} personnalisés</span>
+          {customWords.length > 0 ? (
+            <span className="badge" style={{ background: '#e8f5e8', color: '#2e7d32' }}>
+              Mode personnalisé: {customWords.length} mots
+            </span>
+          ) : (
+            <span className="badge">Mode dictionnaire</span>
+          )}
         </div>
         
         <div className="controls">

@@ -28,7 +28,7 @@ function App() {
       <header className="text-center mb-4">
         <div className="logo-container">
           <img 
-            src="/melmofeuille.png" 
+            src="./melmofeuille.png" 
             alt="Melmo" 
             className="logo-image"
           />
