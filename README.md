@@ -224,9 +224,6 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de 
 
 ### ⭐ N'hésitez pas à donner une étoile si ce projet vous plaît !
 
-[![GitHub stars](https://img.shields.io/github/stars/Ronnardd/melmo?style=social)](https://github.com/Ronnardd/melmo)
-[![GitHub forks](https://img.shields.io/github/forks/Ronnardd/melmo?style=social)](https://github.com/Ronnardd/melmo)
-
 **Fait avec ❤️ et beaucoup de ☕**
 
 </div>
