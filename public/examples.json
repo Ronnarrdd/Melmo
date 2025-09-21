@@ -1,0 +1,94 @@
+{
+  "exampleGrids": [
+    {
+      "name": "Grille Facile - Nature",
+      "description": "Grille 10x10 avec des mots liés à la nature",
+      "settings": {
+        "gridSize": 10,
+        "difficulty": "easy",
+        "allowDiagonal": true,
+        "allowReverse": false,
+        "allowHorizontal": true,
+        "allowVertical": true
+      },
+      "words": [
+        "FLEUR",
+        "ARBRE",
+        "SOLEIL",
+        "LUNE",
+        "OCEAN",
+        "MONTAGNE",
+        "RIVIERE",
+        "FORET"
+      ]
+    },
+    {
+      "name": "Grille Moyenne - Culture",
+      "description": "Grille 15x15 avec des mots culturels",
+      "settings": {
+        "gridSize": 15,
+        "difficulty": "medium",
+        "allowDiagonal": true,
+        "allowReverse": true,
+        "allowHorizontal": true,
+        "allowVertical": true
+      },
+      "words": [
+        "MUSIQUE",
+        "CINEMA",
+        "LIVRE",
+        "THEATRE",
+        "PEINTURE",
+        "SCULPTURE",
+        "DANSE",
+        "LITTERATURE",
+        "PHILOSOPHIE",
+        "HISTOIRE"
+      ]
+    },
+    {
+      "name": "Grille Difficile - Science",
+      "description": "Grille 20x20 avec des termes scientifiques",
+      "settings": {
+        "gridSize": 20,
+        "difficulty": "hard",
+        "allowDiagonal": true,
+        "allowReverse": true,
+        "allowHorizontal": true,
+        "allowVertical": true
+      },
+      "words": [
+        "MATHEMATIQUES",
+        "PHYSIQUE",
+        "CHIMIE",
+        "BIOLOGIE",
+        "ASTRONOMIE",
+        "GEOGRAPHIE",
+        "PSYCHOLOGIE",
+        "SOCIOLOGIE",
+        "ANTHROPOLOGIE",
+        "ARCHAEOLOGIE",
+        "TECHNOLOGIE",
+        "ARCHITECTURE"
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "name": "Nature",
+      "words": ["FLEUR", "ARBRE", "SOLEIL", "LUNE", "OCEAN", "MONTAGNE", "RIVIERE", "FORET", "ANIMAL", "CHAT", "CHIEN", "OISEAU", "POISSON"]
+    },
+    {
+      "name": "Culture",
+      "words": ["MUSIQUE", "CINEMA", "LIVRE", "THEATRE", "PEINTURE", "SCULPTURE", "DANSE", "LITTERATURE", "PHILOSOPHIE", "HISTOIRE"]
+    },
+    {
+      "name": "Science",
+      "words": ["MATHEMATIQUES", "PHYSIQUE", "CHIMIE", "BIOLOGIE", "ASTRONOMIE", "GEOGRAPHIE", "PSYCHOLOGIE", "SOCIOLOGIE", "TECHNOLOGIE"]
+    },
+    {
+      "name": "Vie Quotidienne",
+      "words": ["MAISON", "JARDIN", "VOITURE", "RESTAURANT", "BOUTIQUE", "BANQUE", "ARGENT", "TRAVAIL", "FAMILLE", "AMITIE"]
+    }
+  ]
+}
